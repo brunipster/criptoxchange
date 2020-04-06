@@ -1,20 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <main>
+    <HeaderComponent :links="links" />
+    <router-view class="container px-5 sm:px-20 py-2 flex justify-center" />
+  </main>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HeaderComponent from '@/components/HeaderComponent'
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
+  name: 'App',
+  components: { HeaderComponent },
+  data() {
+    return {
+      links: [
+        {
+          title: 'BTC',
+          to: { name: 'coin-detail', params: { id: 'bitcoin' } }
+        },
+        {
+          title: 'ETH',
+          to: { name: 'coin-detail', params: { id: 'ethereum' } }
+        },
+        {
+          title: 'XRP',
+          to: { name: 'coin-detail', params: { id: 'ripple' } }
+        }
+      ]
+    }
   }
-};
+}
 </script>
+
 
 <style>
 #app {
